@@ -17,7 +17,7 @@
 # SSH_PUBLIC_KEY - ssh public key, pass contents of `cat ~/.ssh/id_rsa.pub` for example
 # ROOT_PASSWORD - root password, only SSH key-based authentication will work if not set
 ##
-USE_LIVECD_KERNEL=0 ROOT_PASSWORD=esketit
+USE_LIVECD_KERNEL=1 ROOT_PASSWORD=lee
 set -e
 
 GENTOO_MIRROR="http://distfiles.gentoo.org"
@@ -156,7 +156,7 @@ emerge sys-kernel/gentoo-sources
 if [ "$USE_LIVECD_KERNEL" = 0 ]; then
     echo "### Installing kernel..."
 
-    echo "sys-kernel/genkernel -firmware" > /etc/portage/package.use/genkernel
+    echo "sys-kernel/genkernel firmware" > /etc/portage/package.use/genkernel
     echo "sys-apps/util-linux static-libs" >> /etc/portage/package.use/genkernel
 
     emerge sys-kernel/genkernel
@@ -213,5 +213,5 @@ fi
 END
 
 echo "### Ydachno"
-
+reboot
 
